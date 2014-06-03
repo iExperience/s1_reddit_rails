@@ -1,7 +1,7 @@
 class Story < ActiveRecord::Base
 	def self.get_stories
 		# get stories from the API
-		response = RestClient.get("http://reddit.com/top.json?limit=5")
+		response = RestClient.get("http://reddit.com/r/random.json?limit=5")
 		parsed_response = JSON.parse(response)
 		story_hashes = parsed_response['data']['children']
 
