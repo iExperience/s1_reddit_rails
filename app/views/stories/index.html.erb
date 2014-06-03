@@ -1,0 +1,9 @@
+<h1>Reddit Stories</h1>
+
+<ul>
+	<% @stories.each do |story| %>
+		<li>[<%= story.score %>] <%=story.title%></li>
+	<% end %>
+</ul>
+
+<%=link_to 'Refresh', '/stories/refresh' %>
