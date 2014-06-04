@@ -1,6 +1,23 @@
 class StoriesController < ApplicationController
+
+	# From GET /stories (check routes.rb)
 	def index
-		@stories = Story.get_stories
+		# The params hash is created by Rails to store
+		# the parameters given by any forms in the view.
+		# The keys (in this case :type, :feed and :limit)
+		# are specified by the names of the inputs.
+		@stories = Story.get_stories(params[:type],
+			params[:feed], params[:limit])
+	end
+
+	# From POST /stories (check routes.rb)
+	def filter
+		@stories = Story.get_stories(params[:type],
+			params[:feed], params[:limit])
+
+		# Renders app/views/stories/index.html.erb
+		#   instead of the default filter.html.erb
+		render "index"
 	end
 
 	# NOTE: The code below was moved to a Story.get_stories

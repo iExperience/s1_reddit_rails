@@ -1,7 +1,26 @@
-<h1>(Random) Reddit Stories</h1>
+<h1>Choose Your Reddit Stories</h1>
 
-<ul>
+<ol>
 	<% @stories.each do |story| %>
 		<li>[<%= story.score %>] <%=story.title%></li>
 	<% end %>
-</ul>
+</ol>
+
+
+<%= form_tag('/stories', method: "get") do %>
+  <!-- The various inputs. Note that their names
+       correspond to the key in the params hash in
+       stories_controller.rb -->
+  <select name="type">
+    <option value="top">Top</option>
+    <option value="hot">Hot</option>
+  </select>
+
+  <select name="feed">
+    <option value="cats">Cats</option>
+    <option value="cars">Cars</option>
+    <option value="capetown">Cape Town</option>
+  </select>
+  <input type="number" name="limit">
+  <input type="submit" value="Go">
+<% end %>

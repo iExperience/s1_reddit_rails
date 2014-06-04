@@ -10,7 +10,13 @@ Rails.application.routes.draw do
   
   #resources :stories
 
+  # Responds to GET /stories 
+  # When someone visits the page for the firs time, or
+  # when a form has method get
   get 'stories' => 'stories#index'
+
+  # Responds to POST /stories (when a form has method post)
+  post 'stories' => 'stories#filter'
 
   get 'stories/refresh' => 'stories#refresh'
 
